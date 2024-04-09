@@ -10,6 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @Slf4j
@@ -34,5 +35,14 @@ class BoardMapperTest {
 
         log.info("updated : " + updated);
 
+    }
+
+    @Test
+    public void boardFindAllTest(){
+        List<Board> list = boardMapper.boardFindAll();
+
+        for(Board board : list){
+            log.info(String.valueOf(board));
+        }
     }
 }
