@@ -11,4 +11,9 @@ public interface BoardMapper {
     int boardInsert(Board board);
 
     List<Board> boardFindAll();
+
+    Board boardDetail(Long id);
+    
+    List<Board> boardSearch(String searchkey);
+
 }

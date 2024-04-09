@@ -45,4 +45,24 @@ class BoardMapperTest {
             log.info(String.valueOf(board));
         }
     }
+
+    @Test
+    public void boardDetailTest(){
+        Long id = 115L;
+
+        Board board = boardMapper.boardDetail(id);
+
+        log.info(String.valueOf(board));
+    }
+
+    @Test
+    public void boardSearchKeyTest(){
+        String searchkey = "굿";
+
+        List<Board> list = boardMapper.boardSearch(searchkey);
+
+        for(Board board : list){
+            log.info(String.valueOf(board));
+        }
+    }
 }
