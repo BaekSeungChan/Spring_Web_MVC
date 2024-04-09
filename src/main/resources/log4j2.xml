@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{hh:mm:ss} %5p [%c] %m%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+        </Root>
+
+        <Logger name="org.springframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+
+        <!--하단 name에 본인이 사용하는 package명으로 수정할 것-->
+        <Logger name="com.example.spring_web_mvc_mybatis" level="INFO" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+    </Loggers>
+</Configuration>
