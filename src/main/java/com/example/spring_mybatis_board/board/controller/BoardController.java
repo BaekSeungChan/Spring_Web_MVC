@@ -8,12 +8,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -48,7 +50,12 @@ public class BoardController {
 
 
     @GetMapping("/list")
-    public String list(){
+    public String list(Model model){
+
+        List<BoardDTO> boards = boardService.boardFindAll();
+
+        model.addAttribute("list", boards);
+
         return "board/list";
     }
 

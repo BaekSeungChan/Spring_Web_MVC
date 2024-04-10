@@ -9,6 +9,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -24,4 +28,12 @@ public class BoardService {
 
         return updated;
     }
+
+    public List<BoardDTO> boardFindAll(){
+        List<Board> boardList = boardMapper.boardFindAll();
+
+        return boardList.stream().map(vo -> modelMapper.map(vo, BoardDTO.class))
+                .collect(Collectors.toList());
+    }
+
 }
