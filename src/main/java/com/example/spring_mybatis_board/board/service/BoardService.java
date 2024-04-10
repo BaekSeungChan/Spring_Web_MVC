@@ -36,4 +36,10 @@ public class BoardService {
                 .collect(Collectors.toList());
     }
 
+    public BoardDTO boardDetail(Long id){
+        Board board = boardMapper.boardDetail(id);
+
+        return modelMapper.map(board, BoardDTO.class);
+    }
+
 }

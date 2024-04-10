@@ -3,16 +3,14 @@ package com.example.spring_mybatis_board.board.controller;
 
 import com.example.spring_mybatis_board.board.dto.BoardDTO;
 import com.example.spring_mybatis_board.board.service.BoardService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,6 +55,15 @@ public class BoardController {
         model.addAttribute("list", boards);
 
         return "board/list";
+    }
+
+    @GetMapping("/view")
+    public String view(@RequestParam("id") Long id, Model model){
+        BoardDTO boardDTO = boardService.boardDetail(id);
+
+        model.addAttribute("board", boardDTO);
+
+        return "/board/view";
     }
 
 }

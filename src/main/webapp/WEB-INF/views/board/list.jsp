@@ -31,7 +31,7 @@
 
 <div class="container mt-5">
     <div class="write-button text-right">
-        <a href="/board.do?action=insertForm" class="btn btn-secondary" style="margin-bottom: 10px">글쓰기</a>
+        <a href="/board/insertForm" class="btn btn-secondary" style="margin-bottom: 10px">글쓰기</a>
     </div>
     <div class="row" style="margin-bottom: 10px">
         <div class="col-2 bg-dark-gray text-center">ID</div>
@@ -44,7 +44,7 @@
         <c:forEach var="board" items="${list}">
             <div class="board-row row">
                 <div class="col-2 text-center">
-                    <a href="/board.do?action=view&id=${board.id}">${board.id}</a>
+                    <a href="/board/view?id=${board.id}">${board.id}</a>
                 </div>
                 <div class="col-2 text-center">${board.title}</div>
                 <div class="col-4 text-center">${board.content}</div>

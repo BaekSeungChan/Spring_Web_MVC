@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시물 상세 페이지</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <link href="css/board/view.css" rel="stylesheet">
+    <link href="../../../resources/css/board/view.css" rel="stylesheet">
 </head>
 <body>
 
