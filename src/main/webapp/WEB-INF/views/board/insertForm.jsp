@@ -12,7 +12,7 @@
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">글쓰기</h2>
-    <form  action="/board.do" method="post">
+    <form id="insertForm" action="/board/insert" method="post">
         <div class="form-group">
             <label for="title">제목</label>
             <input type="text" class="form-control" id="title" name="title" required>
@@ -29,19 +29,14 @@
         </div>
 
         <div class="text-right">
-            <button onclick="insertButton()" class="btn btn-primary mr-2">등록</button>
-            <a href="/board.do?action=list" class="btn btn-secondary">취소</a>
+            <button type="submit" class="btn btn-primary mr-2">등록</button>
+            <a href="/board/list" class="btn btn-secondary">취소</a>
         </div>
     </form>
 </div>
 </body>
 
 <script>
-
-    const title = document.getElementById("title");
-    const content = document.getElementById("content");
-    const writer = document.getElementById("writer");
-
     function setUserId() {
         // 세션에 저장된 userid를 가져옴
         const userid = '<%= session.getAttribute("userid") %>';
@@ -52,31 +47,44 @@
     window.onload = setUserId;
 
 
-    function insertButton(){
+    const insertForm = document.getElementById("insertForm");
 
-        const param = {
-            action: "insert",
-            title : title.value,
-            content : content.value,
-            writer : writer.value,
-            userid : '<%= session.getAttribute("userid") %>'
-        }
+    <%--const param = {--%>
+    <%--    title : title.value,--%>
+    <%--    content : content.value,--%>
+    <%--    writer : writer.value,--%>
+    <%--    userid : "qwer"--%>
+    <%--    &lt;%&ndash;userid : '<%= session.getAttribute("userid") %>'&ndash;%&gt;--%>
+    <%--}--%>
 
-        fetch(`/board.do`, {
+    insertForm.addEventListener("submit", function(e) {
+        e.preventDefault();  // 폼의 기본 제출 동작 방지
+
+        const formDataObject = {
+            title: title.value,
+            content: content.value,
+            writer: "chan",
+        };
+
+        fetch(`/board/insert`, {
             method: 'POST',
-            body: JSON.stringify(param),
+            body: JSON.stringify(formDataObject),
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             },
-        }).then(res => res.json())
-            .then(json => {
-                if(json.status == 0){
-                    alert("글 등록 완료")
-                    location = "board.do?action=list"
-                } else {
-                    alert(json.statusMessage)
-                }
-            });
-    }
+        }).then(response => {
+            if(response.ok){
+                alert("글 등록 완료");
+                window.location.href = "/board/list";
+            } else {
+                alert("글 등록 실패");
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+            alert("오류가 발생했습니다.");
+        });
+    });
+
+
 </script>
 </html>

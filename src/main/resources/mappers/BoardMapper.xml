@@ -6,15 +6,15 @@
 
     <insert id="boardInsert">
         insert into boards (title, content, writer, dueDate, userid)
-        values (#{title}, #{content}, #{writer}, #{dueDate}, #{userid});
+        values (#{title}, #{content}, #{writer}, #{dueDate}, #{userid})
     </insert>
 
     <select id="boardFindAll" resultType="com.example.spring_mybatis_board.board.domain.Board">
-        select * from boards;
+        select * from boards
     </select>
 
     <select id="boardDetail" resultType="com.example.spring_mybatis_board.board.domain.Board">
-        select * from boards where id = #{id};
+        select * from boards where id = #{id}
     </select>
 
     <select id="boardSearch" resultType="com.example.spring_mybatis_board.board.domain.Board">
