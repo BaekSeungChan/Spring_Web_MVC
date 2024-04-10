@@ -65,4 +65,11 @@ class BoardMapperTest {
             log.info(String.valueOf(board));
         }
     }
+
+    @Test
+    public void boardDelete(){
+        Long id = 115L;
+
+        boardMapper.boardDelete(id);
+    }
 }

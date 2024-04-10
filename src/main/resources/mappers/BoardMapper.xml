@@ -14,10 +14,15 @@
     </select>
 
     <select id="boardDetail" resultType="com.example.spring_mybatis_board.board.domain.Board">
-        select * from boards where id = ${id};
+        select * from boards where id = #{id};
     </select>
 
     <select id="boardSearch" resultType="com.example.spring_mybatis_board.board.domain.Board">
         select * from boards where title like CONCAT('%', #{searchkey}, '%')
     </select>
+
+    <delete id="boardDelete" >
+        delete from boards where id = #{id}
+    </delete>
+
 </mapper>
