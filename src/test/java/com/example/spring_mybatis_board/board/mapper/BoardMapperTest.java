@@ -72,4 +72,18 @@ class BoardMapperTest {
 
         boardMapper.boardDelete(id);
     }
+
+    @Test
+    public void boardUpdate(){
+        Board board = Board.builder()
+                .title("good")
+                .content("happy")
+                .dueDate(Date.valueOf(LocalDate.now()).toLocalDate())
+                .writer("chan")
+                .build();
+
+        Long id = 113L;
+
+        boardMapper.boardUpdate(board, id);
+    }
 }

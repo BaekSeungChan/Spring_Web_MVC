@@ -25,4 +25,14 @@
         delete from boards where id = #{id}
     </delete>
 
+    <update id="boardUpdate">
+        update boards
+        set title = #{board.title},
+            content = #{board.content},
+            writer = #{board.writer},
+            dueDate = #{board.dueDate}
+        where id = #{id}
+    </update>
+
+
 </mapper>

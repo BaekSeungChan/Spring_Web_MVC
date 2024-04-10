@@ -2,7 +2,7 @@ package com.example.spring_mybatis_board.board.mapper;
 
 import com.example.spring_mybatis_board.board.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +17,7 @@ public interface BoardMapper {
     List<Board> boardSearch(String searchkey);
 
     void boardDelete(Long id);
+
+    void boardUpdate(@Param("board") Board board, @Param("id") Long id);
 
 }
