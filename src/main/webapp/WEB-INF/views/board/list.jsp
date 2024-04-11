@@ -77,7 +77,7 @@
                 console.log("json", json);
                 if(json.status == 0){
                     alert("글 등록 완료")
-                    location = "board.do?action=list"
+                    location = "/board/ist"
                 } else {
                     alert(json.statusMessage)
                 }

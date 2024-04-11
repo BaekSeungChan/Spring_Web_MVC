@@ -6,6 +6,11 @@ plugins {
 group 'com.example'
 version '1.0-SNAPSHOT'
 
+ext {
+    springSecurityVersion = '5.3.6.RELEASE'
+    junitVersion = '5.9.2'
+}
+
 repositories {
     mavenCentral()
 }
@@ -77,9 +82,14 @@ dependencies {
 
     implementation 'org.springframework:spring-webmvc:5.3.19'
 
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.5'
+    //security
+    implementation "org.springframework.security:spring-security-web:${springSecurityVersion}"
+    implementation "org.springframework.security:spring-security-config:${springSecurityVersion}"
+    implementation "org.springframework.security:spring-security-core:${springSecurityVersion}"
 
+    // JSON
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
 }
 
 test {

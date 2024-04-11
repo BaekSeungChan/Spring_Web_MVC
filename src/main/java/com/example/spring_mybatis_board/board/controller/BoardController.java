@@ -32,7 +32,6 @@ public class BoardController {
 
     @PostMapping("/insert")
     public ResponseEntity<?> insert(@RequestBody BoardDTO boardDTO){
-        log.info("goddd " + String.valueOf(boardDTO));
         try {
             int update = boardService.boardInsert(boardDTO);
             if(update > 0){
